@@ -62,6 +62,17 @@ LICENSE_RANK = {
 
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
+# A source URL that returns HTTP 200 is not automatically verified.
+# uscode.house.gov served 200 with a "Site is currently under
+# maintenance" body on 2026-10-06. A page that looks fine until you
+# read it is the same failure class as a fabricated citation.
+MAINTENANCE_MARKERS = (
+    "currently under maintenance",
+    "site is temporarily unavailable",
+    "temporarily unavailable",
+    "service unavailable",
+)
+
 
 @dataclass
 class Citation:
@@ -146,6 +157,18 @@ def _divisions_on_disk() -> List[str]:
         d for d in os.listdir(DIVISIONS_DIR)
         if os.path.isdir(os.path.join(DIVISIONS_DIR, d))
     )
+
+
+def looks_like_maintenance(body: str) -> bool:
+    """HTTP 200 with an error body is not a working source.
+
+    Offline check: the caller fetches, passes the body here. Kept pure so
+    it is testable without network.
+    """
+    if not body:
+        return False
+    low = body.lower()
+    return any(m in low for m in MAINTENANCE_MARKERS)
 
 
 def gate(doc: Document, on_disk: Optional[List[str]] = None) -> Verdict:

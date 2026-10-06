@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), "tools"))
 from cite import (  # noqa: E402
     Citation, Document, DIVISIONS, JURISDICTIONS, LICENSES,
     LICENSE_RANK, Term, compile_doc, gate, gate_term, load_terms,
+    looks_like_maintenance,
 )
 
 DISK = list(DIVISIONS)
@@ -163,6 +164,37 @@ def t_L10_taxonomy_covers_divisions():
     print(f"L10: ok ({len(DIVISIONS)} divisions declared and scaffolded)")
 
 
+def t_L11_maintenance_page_is_not_verified():
+    """HTTP 200 with an error body is not a source.
+
+    uscode.house.gov returned 200 on 2026-10-06 carrying "Site is
+    currently under maintenance". Recording that as a verified source
+    would be the same failure as a fabricated citation: it looks right
+    until you read it.
+    """
+    real = "<html><body>Title 42. Public Health. Sec. 200.</body></html>"
+    down = ("<html><body>Skip to main content house.gov. Site is currently "
+            "under maintenance. The site you requested is currently unavailable.")
+    assert not looks_like_maintenance(real), "real content misread as maintenance"
+    assert looks_like_maintenance(down), "maintenance page passed as a live source"
+    assert not looks_like_maintenance(""), "empty body misread as maintenance"
+    print("L11: ok (200-but-maintenance is not verified)")
+
+
+def t_L12_taxonomy_is_organizational():
+    """the division names are subject areas, not Yale content.
+
+    The repo is organized by Yale's academic divisions. Nothing of
+    Yale's is reproduced, and no Yale casebook or material is used.
+    """
+    assert "constitutional" in DIVISIONS
+    # a division name is a plain subject-area string, not a citation
+    for d in DIVISIONS:
+        assert d.islower(), f"division name should be a slug: {d}"
+        assert " " not in d, f"division name should be a slug: {d}"
+    print(f"L12: ok ({len(DIVISIONS)} slugs; no third-party content implied)")
+
+
 def main():
     t_L1_repro_id()
     t_L2_citation_required()
@@ -175,7 +207,9 @@ def main():
     t_L8_pin_cite_required_for_opinions()
     t_L9_bad_date_refused()
     t_L10_taxonomy_covers_divisions()
-    print("\nALL FAR-LAW GATE TESTS PASS (L1..L10)")
+    t_L11_maintenance_page_is_not_verified()
+    t_L12_taxonomy_is_organizational()
+    print("\nALL FAR-LAW GATE TESTS PASS (L1..L12)")
 
 
 if __name__ == "__main__":

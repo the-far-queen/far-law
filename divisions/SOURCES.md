@@ -68,11 +68,17 @@ file's own header before citing it.
 It is the standard term dictionary for American law and Bobby named it
 as the model for term definitions. It cannot be copied into this repo.
 
-The 1919 **second edition** is digitized on archive.org. Its copyright
-status is **contested / not clearly public domain** — do not treat it as
-free material without an independent determination. UNVERIFIED: this is
-flagged in the law research and must be resolved before any term text is
-lifted from it.
+The 1919 **second edition** is digitized on archive.org, but its metadata
+is **self-contradictory**: four Internet Archive copies of the same 1910
+2nd edition declare *different* licenses (two carry the Public Domain Mark,
+one carries CC BY-NC-ND 4.0, one declares none). The scan itself is a Google
+Books copy whose front matter adds non-commercial and no-automated-querying
+conditions. **Verdict: NOT SAFE. Do not copy any Black's text into this
+repo**, however old the edition.
+
+**The 2nd edition is still useful as a research pointer** — for which terms
+existed historically and which old-English/civil-law terms modern sources
+drop. Point at it; never vendor it.
 
 The correct pattern for this repo: define a term in our own words, cite
 a **public-domain** authority for the definition (a statute, a rule, a
@@ -85,15 +91,19 @@ the entry, not the *text*.
 
 | Source | License | Verdict |
 |---|---|---|
-| Harvard Law School **H2O** (h2o.law.harvard.edu) | **CC BY-NC-SA** | NC + SA bind. Free to read, but a derived work cannot be relicensed MIT. Link and index; do not copy wholesale into MIT content. |
-| Stanford **OpenLaw** / CodeX Stanford | varies; generally permissive for research | verify per item |
-| MIT OpenCourseWare law courses | varies per course; many CC BY-NC-SA | verify per course |
-| University casebooks on **Open Textbook Library** | typically CC BY | verify per title |
-| **Caselaw Access Project** (`case.law`) | status has changed over time | **verify current terms before use** |
+| Harvard Law School **H2O** (`opencasebook.org`) | **CC BY-NC-SA 3.0** | NC + SA bind. Free to read, but a derived work cannot be relicensed MIT. Link and index; do not copy wholesale into MIT content. |
+| Stanford **OpenLaw** / CodeX Stanford | — | **`openlaw.stanford.edu` does not resolve** (DNS failure). Not reachable; do not plan around it. |
+| MIT OpenCourseWare law courses | **CC BY-NC-SA 4.0** | Same NC + SA bind as H2O. **NOT SAFE** to copy. |
+| University casebooks on **Open Textbook Library** | **per title** — verified: CC BY-SA *or* CC BY-NC-SA | CC BY-SA titles are usable in a self-contained SA subdirectory; CC BY-NC-SA titles are not. Check per title. |
+| **Caselaw Access Project** (`case.law`) data + metadata | **CC0 1.0** (verified `case.law/terms`, effective 2024-03-13) | **SAFE.** No conditions; attribution is a request, not a requirement. |
+| **OpenStax** | no Law subject exists; blanket CC BY-NC-SA | **n/a.** `openstax.org/subjects/law` renders empty; subject list has no law. Drop from plan. |
 
 **H2O being NC-SA is the important one.** It looks like an unrestricted
 legal resource and is not usable in MIT-licensed derivative content
-without inheriting NC-SA.
+without inheriting NC-SA. **MIT OCW is identical** — CC BY-NC-SA 4.0.
+
+**The best licence in this repo is CC0 1.0** (CAP data). It is the only
+material here with no conditions at all.
 
 ---
 
@@ -113,5 +123,6 @@ here; only the names of subject areas, which are not copyrightable.
 |---|---|
 | govinfo API with free key | register, then verify bulk US Code + federal court opinion endpoints |
 | uscode.house.gov | re-check when maintenance clears; this is the authoritative US Code |
-| Cornell LII (law.cornell.edu) | reachable (verified 200 on a US Code page); LII is its own copyrighted compilation — check its terms before copying |
-| case.law / Caselaw Access Project | current license and access terms |
+| Cornell LII (law.cornell.edu) | reachable (verified 200 on a US Code page); LII is its own copyrighted compilation — check its terms before copying. Its `/terms-of-use` and `/about` both returned **404**, so the licence text was not located. |
+| case.law / Caselaw Access Project | **RESOLVED.** Data + metadata = CC0 1.0 (SAFE). API sunset 2024-09-05 — `api.case.law` now serves HTML, not JSON. Use `static.case.law` bulk instead. |
+| ALI permissions page | `ali.org/permissions/` 404 — Restatement licensing NOT verified against a primary source. Substance (not free) is not in doubt; licence text is. |

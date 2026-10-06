@@ -37,9 +37,13 @@ material is reproduced and no Yale endorsement is implied.
 
 ## Divisions (the taxonomy)
 
-far-law is organized by Yale Law School's academic divisions. Each
-division is a directory under `divisions/`. Each division carries its
-own `terms/` (defined terms) and `sources/` (open textbooks).
+far-law is organized by a taxonomy **informed by, and extending,** Yale
+Law School's published areas of interest, because those are a defensible
+map of what legal scholarship actually covers. Yale publishes 12 areas
+(see `divisions/YALE-AREAS.md` for the verbatim list and the mapping); this
+repo carries 13 directories, adding Intellectual Property, Legislation &
+Policy, Litigation, Tax, Labor, and splitting Corporate & Commercial into
+Corporate and Commercial. Subject-area *names* are not copyrightable.
 
 ```
 divisions/
@@ -95,12 +99,18 @@ document and refuses to place non-free material under our MIT blanket.
 | US Constitution | US government work | **SAFE** |
 | US federal statutes (uscode.house.gov) | US government work | **SAFE** |
 | US federal court opinions (govinfo.gov, CourtListener/RECAP) | US government work | **SAFE** |
-| Caselaw Access Project (`case.law`) | verify current status | verify before use |
+| Caselaw Access Project (`case.law`) data + metadata | **CC0 1.0** | **SAFE** (verified 2026-10-06) |
 | Black's Law Dictionary (any edition) | Thomson Reuters, copyrighted | **NOT SAFE** |
 | Restatement of the Law | ALI, copyrighted | **NOT SAFE** |
-| OpenStax / MIT OCW / H2O / OpenLaw (CC-BY) | check per work | safe if CC-BY |
+| OpenStax | **no Law subject exists**; blanket CC BY-NC-SA | **NOT SAFE / n/a** |
+| MIT OCW law courses | **CC BY-NC-SA 4.0** | **NOT SAFE** |
+| H2O Open Casebooks | **CC BY-NC-SA 3.0** | **NOT SAFE** |
+| Open Textbook Library law titles | per title: CC BY-SA or CC BY-NC-SA | safe only if CC BY-SA |
 | LibreTexts | typically CC-BY-NC-SA | **NC + SA constrain use** |
 | Yale's own casebooks | Yale University Press, copyrighted | **NOT SAFE** |
+
+Full per-source evidence, URLs, and access mechanics:
+[`divisions/RESEARCH-sources.md`](./RESEARCH-sources.md).
 
 ## Surface
 

@@ -10,15 +10,26 @@ downstream of this file.
 
 ## What this repo is
 
-A free, public-domain substrate for the legal-text pipeline: cited
+A free, open-source **law school** for humans and for AI: cited
 opinions, statutes, contracts, briefs, and the tools that keep them
 honest. Organized by Yale Law School's academic divisions, because
-those are a defensible taxonomy of what legal scholarship actually
+those are the sharpest existing map of what legal scholarship actually
 covers.
+
+**Purpose: order.** The school is real — it teaches, it gates, it
+refuses to take a student who cannot cite an authority. It is not a
+university in the accreditation sense: no credits, no tuition, no
+enrollment office, nothing for sale. What it produces is a substrate
+that AI agents and the humans working with them can use directly.
+
+The Yale divisions are borrowed as an organizational map. No Yale
+material is reproduced and no Yale endorsement is implied.
 
 ## What this repo is NOT
 
-- **Not legal advice.** This is a substrate and tooling. Use a lawyer.
+- **Not a university.** No credits, no tuition, no accreditation, no
+  enrollment. A school without a price.
+- **Not legal advice.** This is a school and tooling. Use a lawyer.
 - **Not a prompt collection.** Prompts are noise without citations.
 - **Not a house style.** The point is *named jurisdiction + cited
   authority*, not a default voice.
